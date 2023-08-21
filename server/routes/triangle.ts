@@ -10,15 +10,15 @@ router.get('/', async (req, res) => {
     const c = Number(req.query.c)
 
     if (isNaN(a) || isNaN(b) || isNaN(c)) {
-      res.status(400).json({ error: 'Invalid parameters!' })
+      res.status(400).send('Invalid parameters!')
       return
     }
 
     const responseData = compareSides(a, b, c)
 
-    res.json({ message: responseData })
+    res.send(responseData)
   } catch (error) {
-    res.status(500).json({ error: 'Internal server error!' })
+    res.status(500).send('Internal server error!')
   }
 })
 
